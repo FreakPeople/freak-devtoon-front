@@ -12,7 +12,6 @@ function Nav() {
 
     const sideBar = {
         flex: '1',
-        border: '1px solid black'
     }
 
     const centerStyle = {
@@ -20,7 +19,6 @@ function Nav() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        border: '1px solid black'
     };
 
     const navItem = {
@@ -37,7 +35,8 @@ function Nav() {
 
     const menuContainer = {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        // minWidth: '230px'
     }
 
     return (

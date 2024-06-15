@@ -1,14 +1,24 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Promotion from "../component/Promotion.jsx";
+import {ToggleButton, ToggleButtonGroup} from "@mui/material";
 
 function PromotionPage() {
-    const bodyStyle = {
-        border: '1px solid black'
+    const bodyContainer = {
+        display: 'flex',
     };
 
-    const promotionListStyle = {
-        border: '1px solid black'
+    const sideBar = {
+        flex: '1',
+    }
+
+    const promotionContent = {
+        flex: '4',
+    }
+
+    const promotionMenu = {
+        marginTop: '50px',
+        textDecoration: 'none'
     }
 
     const [promotions, setPromotions] = useState([])
@@ -23,13 +33,27 @@ function PromotionPage() {
     }, []);
 
     return (
-        <div style={bodyStyle}>
-            <div>프로모션 페이지</div>
-            <div style={promotionListStyle}>
+        <div style={bodyContainer}>
+            <div style={sideBar}></div>
+            <div style={promotionContent}>
+                <div style={promotionMenu}>
+                    <ToggleButtonGroup
+                        color="primary"
+                        // value={alignment}
+                        exclusive
+                        // onChange={handleChange}
+                        aria-label="Platform"
+                    >
+                        <ToggleButton size="small">전체</ToggleButton>
+                        <ToggleButton size="small">진행 중</ToggleButton>
+                        <ToggleButton size="small">종료</ToggleButton>
+                    </ToggleButtonGroup>
+                </div>
                 {promotions.map((promotion, index) => {
                     return <Promotion key={index} promotion={promotion}/>
                 })}
             </div>
+            <div style={sideBar}></div>
         </div>
     );
 }
