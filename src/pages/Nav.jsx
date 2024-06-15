@@ -1,20 +1,64 @@
 import {Link} from "react-router-dom";
+import PersonOutlineOutlined from '@mui/icons-material/PersonOutlineOutlined';
 
 function Nav() {
-    const navStyle = {
+
+    const navContainer = {
+        display: 'flex',
+        height: '60px',
+        width: '100%',
+        backgroundColor: '#383836'
+    };
+
+    const sideBar = {
+        flex: '1',
+        border: '1px solid black'
+    }
+
+    const centerStyle = {
+        flex: '4',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         border: '1px solid black'
     };
 
     const navItem = {
+        margin: '10px',
+        textDecoration: 'none',
+        color: '#b7b7b7'
+    }
+
+    const logoStyle = {
+        width: '80px',
+        height: '50px',
         margin: '10px'
     }
 
+    const menuContainer = {
+        display: 'flex',
+        alignItems: 'center'
+    }
+
     return (
-        <div style={navStyle}>
-            <Link to="/devtoon-list" style={navItem}>데브툰</Link>
-            <Link to="/promotion" style={navItem}>이벤트</Link>
-            <Link to="/admin" style={navItem}>관리자</Link>
-            <Link to="/my" style={navItem}>마이페이지(로고)</Link>
+        <div style={navContainer}>
+            <div style={sideBar}></div>
+            <div style={centerStyle}>
+                <div>
+                    <Link to="/devtoon-list">
+                        <img style={logoStyle} src='./src/assets/logo.png' alt="devtoon image"/>
+                    </Link>
+                </div>
+                <div style={menuContainer}>
+                    <Link to="/devtoon-list" style={navItem}>데브툰</Link>
+                    <Link to="/promotion" style={navItem}>이벤트</Link>
+                    <Link to="/admin" style={navItem}>관리자</Link>
+                    <Link to="/my" style={navItem}>
+                        <PersonOutlineOutlined/>
+                    </Link>
+                </div>
+            </div>
+            <div style={sideBar}></div>
         </div>
     )
 }
