@@ -68,7 +68,7 @@ function DevtoonPage() {
             <div style={bodyContainer}>
                 <div style={sideBar}></div>
                 <div style={centerStyle}>
-                    <div style={titleStyle}>이거 이거하면 you are devel..p..m...</div>
+                    <div style={titleStyle}>이거 알면 you are devel..p..m...</div>
                     <div style={registerButtonContainer}>
                         <Button style={registerButtonStyle} variant="outlined">데브툰 올리기</Button>
                     </div>
