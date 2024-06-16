@@ -19,8 +19,9 @@ function DevtoonPage() {
     };
 
     const devtoonList = {
-        border: '1px solid black',
-        borderRadius: '4px',
+        boxShadow: '0px 0px 10px 0px rgba(0, 0, 0, 0.1)',
+        // border: '1px solid black',
+        borderRadius: '10px',
         height: '600px',
         overflow: 'auto'
     }

@@ -1,6 +1,7 @@
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import {FavoriteBorderOutlined} from "@mui/icons-material";
 import {IconButton} from "@mui/material";
+import './Devtoon.css'
 
 function Devtoon(props) {
 
@@ -55,7 +56,7 @@ function Devtoon(props) {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '2px 2px 2px 4px',
+        padding: '2px 6px 2px 4px',
         color: '#504E4B'
     }
 
@@ -69,7 +70,7 @@ function Devtoon(props) {
     return (
         <div style={devtoonContainer}>
             <div style={sideBar}></div>
-            <div style={centerStyle}>
+            <div className="devtoonContainer" style={centerStyle}>
                 <img style={devtoonImageStyle} src='./src/assets/logo.png' alt="devtoon image"/>
                 <IconButton style={FavoriteStyle} color="error">
                     <FavoriteBorderOutlined/>

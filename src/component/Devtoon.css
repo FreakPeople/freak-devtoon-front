@@ -1,0 +1,10 @@
+
+.devtoonContainer {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    transition: transform 0.4s ease;
+}
+
+.devtoonContainer:hover {
+    transform: translate(5px, 5px); /* 마우스 호버 시 이동할 위치 */
+}
