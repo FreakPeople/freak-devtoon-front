@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import PersonOutlineOutlined from '@mui/icons-material/PersonOutlineOutlined';
+import './Nav.css'
 
 function Nav() {
 
@@ -49,10 +50,10 @@ function Nav() {
                     </Link>
                 </div>
                 <div style={menuContainer}>
-                    <Link to="/devtoon-list" style={navItem}>데브툰</Link>
-                    <Link to="/promotion" style={navItem}>이벤트</Link>
-                    <Link to="/admin" style={navItem}>관리자</Link>
-                    <Link to="/my" style={navItem}>
+                    <Link className="navItem" to="/devtoon-list" style={navItem}>데브툰</Link>
+                    <Link className="navItem" to="/promotion" style={navItem}>이벤트</Link>
+                    <Link className="navItem" to="/admin" style={navItem}>관리자</Link>
+                    <Link className="navItem" to="/my" style={navItem}>
                         <PersonOutlineOutlined/>
                     </Link>
                 </div>
