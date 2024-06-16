@@ -5,19 +5,17 @@ import {IconButton} from "@mui/material";
 function Devtoon(props) {
 
     const devtoonContainer = {
+        marginBottom: '20px',
         display: 'flex',
-        border: '1px solid black'
     }
 
     const sideBar = {
         flex: '1',
-        border: '1px solid black'
     }
 
     const centerStyle = {
         position: 'relative',
         width: '350px',
-        border: '1px solid black'
     };
 
     const devtoonImageStyle = {
@@ -32,6 +30,40 @@ function Devtoon(props) {
         right: '10px'
     }
 
+    const genreLine = {
+        display: 'flex',
+        padding: '2px',
+        color: '#504E4B'
+    }
+
+    const genre = {
+        marginTop: '2px',
+        marginRight: '2px',
+        padding: '3px 6px 4px 6px', // 북, 동, 남, 서
+        height: '20px',
+        fontSize: '20px',
+        border: 'solid 1px #615F5C',
+        borderRadius: '6px'
+    }
+
+    const createdAtLine = {
+        padding: '2px 2px 2px 4px',
+        color: '#504E4B'
+    }
+
+    const writerLine = {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '2px 2px 2px 4px',
+        color: '#504E4B'
+    }
+
+    const favoriteIconStyle = {
+        marginLeft: 'auto',
+        marginRight: '4px'
+    }
+
     const {devtoon} = props;
 
     return (
@@ -42,10 +74,17 @@ function Devtoon(props) {
                 <IconButton style={FavoriteStyle} color="error">
                     <FavoriteBorderOutlined/>
                 </IconButton>
-                <p>{devtoon['webtoonId']}</p>
-                <p>{devtoon['title']}</p>
-                <p>{devtoon['writerName']}</p>
-                <FavoriteIcon></FavoriteIcon>
+                {/*이미지 주소(준비중), 좋아요 개수(준비중)*/}
+                <div style={genreLine}>
+                    <div style={genre}>{devtoon['genre']}</div>
+                    <div style={genre}>{devtoon['genre']}</div>
+                </div>
+                <div style={createdAtLine}>{devtoon['createdAt'].substring(0, 10)}</div>
+                <div style={writerLine}>
+                    <div>{devtoon['writerName']}</div>
+                    <FavoriteIcon style={favoriteIconStyle}></FavoriteIcon>
+                    <div>17</div>
+                </div>
             </div>
             <div style={sideBar}></div>
         </div>

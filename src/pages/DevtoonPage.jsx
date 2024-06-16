@@ -7,21 +7,22 @@ function DevtoonPage() {
     const bodyContainer = {
         display: 'flex',
         width: '100%',
-        border: '1px solid black'
+        height: '100%',
     }
 
     const sideBar = {
         flex: '1',
-        border: '1px solid black'
     }
 
     const centerStyle = {
         flex: '4',
-        border: '1px solid black'
     };
 
     const devtoonList = {
-        border: '1px solid black'
+        border: '1px solid black',
+        borderRadius: '4px',
+        height: '600px',
+        overflow: 'auto'
     }
 
     const titleStyle = {
@@ -41,6 +42,14 @@ function DevtoonPage() {
         float: 'right'
     }
 
+    const bottomBar = {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '150px'
+    }
+
     const [devtoons, setDevtoons] = useState([])
 
     useEffect(() => {
@@ -54,21 +63,27 @@ function DevtoonPage() {
 
 
     return (
-        <div style={bodyContainer}>
-            <div style={sideBar}></div>
-            <div style={centerStyle}>
-                <div style={titleStyle}>이거 이거하면 you are devel..p..m...</div>
-                <div style={registerButtonContainer}>
-                    <Button style={registerButtonStyle} variant="outlined">데브툰 올리기</Button>
+        <>
+            <div style={bodyContainer}>
+                <div style={sideBar}></div>
+                <div style={centerStyle}>
+                    <div style={titleStyle}>이거 이거하면 you are devel..p..m...</div>
+                    <div style={registerButtonContainer}>
+                        <Button style={registerButtonStyle} variant="outlined">데브툰 올리기</Button>
+                    </div>
+                    <div style={devtoonList}>
+                        {devtoons.map((devtoon, index) => {
+                            return <Devtoon key={index} devtoon={devtoon}/>
+                        })}
+                    </div>
                 </div>
-                <div style={devtoonList}>
-                    {devtoons.map((devtoon, index) => {
-                        return <Devtoon key={index} devtoon={devtoon}/>
-                    })}
-                </div>
+                <div style={sideBar}></div>
             </div>
-            <div style={sideBar}></div>
-        </div>
+            <div style={bottomBar}>
+                <div>xxxxxx@naver.com</div>
+                <div>yjh.corp</div>
+            </div>
+        </>
     );
 }
 
