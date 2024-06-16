@@ -101,9 +101,9 @@ function Promotion(props) {
                 </div>
                 <div>
                 {
-                    promotion['startDate'].substring(0, 10)
+                    promotion['startDate'].substring(0, 10).split('-').join('.')
                     + ' ~ ' +
-                    promotion['endDate'].substring(0, 10)
+                    promotion['endDate'].substring(0, 10).split('-').join('.')
                 }
                 </div>
                 {isAdmin && <div style={promotionEndButton}><Button size="small">종료</Button></div>}

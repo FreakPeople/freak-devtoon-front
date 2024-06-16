@@ -79,7 +79,7 @@ function Devtoon(props) {
                     <div style={genre}>{devtoon['genre']}</div>
                     <div style={genre}>{devtoon['genre']}</div>
                 </div>
-                <div style={createdAtLine}>{devtoon['createdAt'].substring(0, 10)}</div>
+                <div style={createdAtLine}>{devtoon['createdAt'].substring(0, 10).split('-').join('.')}</div>
                 <div style={writerLine}>
                     <div>{devtoon['writerName']}</div>
                     <FavoriteIcon style={favoriteIconStyle}></FavoriteIcon>
