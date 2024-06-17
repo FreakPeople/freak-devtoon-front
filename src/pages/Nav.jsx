@@ -46,7 +46,7 @@ function Nav() {
             <div style={centerStyle}>
                 <div>
                     <Link to="/devtoon-list">
-                        <img style={logoStyle} src='./src/assets/logo.png' alt="devtoon image"/>
+                        <img style={logoStyle} src='/logo.png' alt="devtoon image"/>
                     </Link>
                 </div>
                 <div style={menuContainer}>

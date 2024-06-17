@@ -2,6 +2,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import {FavoriteBorderOutlined} from "@mui/icons-material";
 import {IconButton} from "@mui/material";
 import './Devtoon.css'
+import {useNavigate} from "react-router-dom";
 
 function Devtoon(props) {
 
@@ -65,13 +66,20 @@ function Devtoon(props) {
         marginRight: '4px'
     }
 
-    const {devtoon} = props;
+    const navigate = useNavigate()
+
+    const onClickDetail = ()=> {
+        navigate(`/devtoon-list/${devtoon['webtoonId']}`)
+
+    }
+
+    const { devtoon } = props;
 
     return (
         <div style={devtoonContainer}>
             <div style={sideBar}></div>
-            <div className="devtoonContainer" style={centerStyle}>
-                <img style={devtoonImageStyle} src='./src/assets/logo.png' alt="devtoon image"/>
+            <div className="devtoonContainer" style={centerStyle} onClick={() => onClickDetail()}>
+                <img style={devtoonImageStyle} src='/logo.png' alt="devtoon image"/>
                 <IconButton style={FavoriteStyle} color="error">
                     <FavoriteBorderOutlined/>
                 </IconButton>
@@ -80,7 +88,7 @@ function Devtoon(props) {
                     <div style={genre}>{devtoon['genre']}</div>
                     <div style={genre}>{devtoon['genre']}</div>
                 </div>
-                <div style={createdAtLine}>{devtoon['createdAt'].substring(0, 10).split('-').join('.')}</div>
+                <div style={createdAtLine}>{devtoon['createdAt']}</div>
                 <div style={writerLine}>
                     <div>{devtoon['writerName']}</div>
                     <FavoriteIcon style={favoriteIconStyle}></FavoriteIcon>

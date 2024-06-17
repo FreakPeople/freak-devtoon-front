@@ -5,6 +5,7 @@ import DevtoonPage from "./pages/DevtoonPage.jsx";
 import PromotionPage from "./pages/PromotionPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 import MyPage from "./pages/MyPage.jsx";
+import DevtoonDetailPage from "./pages/DevtoonDetailPage.jsx";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
             <Nav />
             <Routes>
                 <Route path="/devtoon-list" element={<DevtoonPage />} />
+                <Route path="/devtoon-list/:id" element={<DevtoonDetailPage />} />
                 <Route path="/promotion" element={<PromotionPage />} />
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/my" element={<MyPage />} />
