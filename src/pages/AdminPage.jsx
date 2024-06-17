@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Promotion from "../component/Promotion.jsx";
-import {Button, ToggleButton, ToggleButtonGroup} from "@mui/material";
+import {Box, Button, FormControl, InputLabel, MenuItem, Select, ToggleButton, ToggleButtonGroup} from "@mui/material";
 
 function AdminPage() {
 
@@ -30,6 +30,11 @@ function AdminPage() {
     }
 
     const [promotions, setPromotions] = useState([])
+    const [promotionStatus, setPromotionStatus] = useState('');
+
+    const handleChangePromotionStatus = (e) => {
+        setPromotionStatus(e.target.value)
+    };
 
     useEffect(() => {
         axios({
@@ -46,17 +51,22 @@ function AdminPage() {
             <div style={promotionContent}>
                 <div style={promotionMenus}>
                     <div style={promotionMenu}>
-                        <ToggleButtonGroup
-                            color="primary"
-                            // value={alignment}
-                            exclusive
-                            // onChange={handleChange}
-                            aria-label="Platform"
-                        >
-                            <ToggleButton size="small">전체</ToggleButton>
-                            <ToggleButton size="small">진행 중</ToggleButton>
-                            <ToggleButton size="small">종료</ToggleButton>
-                        </ToggleButtonGroup>
+                        <Box sx={{ minWidth: 120 }}>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">행사 상태</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={promotionStatus}
+                                    label="프로모션 상태"
+                                    onChange={handleChangePromotionStatus}
+                                >
+                                    <MenuItem value={10}>전체</MenuItem>
+                                    <MenuItem value={20}>진행 중</MenuItem>
+                                    <MenuItem value={30}>종료</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
                     </div>
                     <div>
                         <Button size="medium">행사 등록</Button>
