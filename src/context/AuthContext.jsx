@@ -1,5 +1,5 @@
 import {createContext, useContext, useState} from "react";
-import {apiClient, loginApiRequest} from "../api_service/DevtoonApiService.js";
+import {loginApiRequest, setJwtToken} from "../api_service/DevtoonApiService.js";
 
 export const AuthContext = createContext()
 
@@ -13,16 +13,8 @@ export default function AuthProvider({ children }) {
         const response = await loginApiRequest(email, password)
 
         if (response.data.statusMessage === '성공') {
-
-            const jwtToken = 'Bearer ' + response.data.data.accessToken
-
-            apiClient.interceptors.request.use(
-                (config) => {
-                    console.log('intercepting and adding a token')
-                    config.headers.Authorization = jwtToken
-                    return config
-                }
-            )
+            const jwtToken = 'Bearer ' + response.data.data.accessToken;
+            setJwtToken(jwtToken);
             setAuthenticated(true)
             return true
         } else {

@@ -6,6 +6,24 @@ export const apiClient = axios.create(
     }
 );
 
+let jwtToken = '';
+
+apiClient.interceptors.request.use(
+    (config) => {
+        if (jwtToken) {
+            config.headers.Authorization = jwtToken;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
+export const setJwtToken = (token) => {
+    jwtToken = token;
+};
+
 // 로그인 인증 요청
 export const loginApiRequest = (email, password) =>
     apiClient.post(
@@ -44,14 +62,14 @@ export const retrieveDevtoonApiRequest = (webtoonId) =>
 export const retrieveAllCommentApiRequest = (webtoonId) =>
     apiClient.get('/v1/comments?webtoonId=' + webtoonId + '&sort=createdAt,desc')
 
-// 특정 회원 조회
-export const retrieveMemberApiRequest = (memberId) =>
-    apiClient.get('/v1/members/' + memberId)
+// 나의 회원 정보 조회
+export const retrieveMemberApiRequest = () =>
+    apiClient.get('/v1/members/my')
 
-// 특정 회원 비속어 카운트 조회
-export const retrieveBadWordsWarningCountApiRequest = (memberId) =>
-    apiClient.get('/v1/bad-words-warning-count?webtoonViewerNo=' + memberId)
+// 나의 비속어 카운트 조회
+export const retrieveBadWordsWarningCountApiRequest = () =>
+    apiClient.get('/v1/bad-words-warning-count/my')
 
-// 특정 회원 쿠키지갑 조회
-export const retrieveCookieWalletApiRequest = (memberId) =>
-    apiClient.get('/v1/cookie-wallets?webtoonViewerNo=' + memberId)
+// 나의 쿠키지갑 조회
+export const retrieveCookieWalletApiRequest = () =>
+    apiClient.get('/v1/cookie-wallets/my')

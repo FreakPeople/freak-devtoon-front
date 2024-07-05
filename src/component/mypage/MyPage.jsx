@@ -28,24 +28,22 @@ function MyPage() {
     const [myWarningCount, setMyWarningCount] = useState([])
     const [myCookieQuantity, setMyCookieQuantity] = useState([])
 
-    const memberId = 1
-
     useEffect(() => {
-        retrieveMemberApiRequest(memberId)
+        retrieveMemberApiRequest()
             .then((response) => {
                 setMyInfo(response.data.data)
             })
     }, []);
 
     useEffect(() => {
-        retrieveBadWordsWarningCountApiRequest(memberId)
+        retrieveBadWordsWarningCountApiRequest()
             .then((response) => {
                 setMyWarningCount(response.data.data)
             })
     }, []);
 
     useEffect(() => {
-        retrieveCookieWalletApiRequest(memberId)
+        retrieveCookieWalletApiRequest()
             .then((response) => {
                 setMyCookieQuantity(response.data.data)
             })
