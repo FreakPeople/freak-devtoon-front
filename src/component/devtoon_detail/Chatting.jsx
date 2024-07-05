@@ -2,8 +2,8 @@ import ChatData from "./ChatData.jsx";
 import {TextField, Button} from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import {useState} from "react";
-import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {writeCommentApiRequest} from "../../api_service/DevtoonApiService.js";
 
 function Chatting(props) {
 
@@ -49,19 +49,11 @@ function Chatting(props) {
     }
 
     const onClickCommentRegister = () => {
-        axios({
-            method: 'post',
-            url: 'http://localhost:8080/v1/comments',
-            data: {
-                webtoonId: devtoon['webtoonId'],
-                detailId: '1',
-                webtoonViewerId: '1',
-                content: commentContent
-            }
-        }).then((response) => {
-            console.log(response.data)
-            window.location.reload();
-        })
+        writeCommentApiRequest(devtoon['webtoonId'], commentContent)
+            .then((response) => {
+                console.log(response.data)
+                window.location.reload()
+            })
     }
 
     const { devtoon, comments } = props;

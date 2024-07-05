@@ -1,4 +1,5 @@
 import {createContext, useContext, useState} from "react";
+import {loginApiRequest} from "../api_service/DevtoonApiService.js";
 
 export const AuthContext = createContext()
 
@@ -8,13 +9,17 @@ export default function AuthProvider({ children }) {
 
     const [isAuthenticated, setAuthenticated] = useState(false)
 
-    function login(username, password) {
-        if (username === 'test' && password === 'test') {
+    async function login(email, password) {
+        const response = await loginApiRequest(email, password)
+
+        if (response.data.statusMessage === '성공') {
+            console.log(response.data.data.accessToken)
             setAuthenticated(true)
             return true
+        } else {
+            setAuthenticated(false)
+            return false
         }
-        setAuthenticated(false)
-        return false
     }
 
     function logout() {

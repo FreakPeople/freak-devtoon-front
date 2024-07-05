@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
 import Promotion from "../promotion/Promotion.jsx";
-import {Box, Button, FormControl, InputLabel, MenuItem, Select, ToggleButton, ToggleButtonGroup} from "@mui/material";
+import {Box, Button, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import {retrieveAllPromotionsNowApiRequest} from "../../api_service/DevtoonApiService.js";
 
 function AdminPage() {
 
@@ -37,12 +37,10 @@ function AdminPage() {
     };
 
     useEffect(() => {
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/v1/promotions/now'
-        }).then((response) => {
-            setPromotions(response.data.data)
-        })
+        retrieveAllPromotionsNowApiRequest()
+            .then((response) => {
+                setPromotions(response.data.data)
+            })
     }, []);
 
     return (

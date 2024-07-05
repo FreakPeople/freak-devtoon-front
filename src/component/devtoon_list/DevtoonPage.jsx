@@ -1,7 +1,7 @@
 import Devtoon from "./Devtoon.jsx";
 import {useEffect, useState} from "react";
-import axios from "axios";
 import {Button} from "@mui/material";
+import {retrieveAllDevtoonsApiRequest} from "../../api_service/DevtoonApiService.js";
 
 function DevtoonPage() {
     const bodyContainer = {
@@ -54,12 +54,10 @@ function DevtoonPage() {
     const [devtoons, setDevtoons] = useState([])
 
     useEffect(() => {
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/v1/webtoons'
-        }).then((response) => {
-            setDevtoons(response.data.data.content)
-        })
+        retrieveAllDevtoonsApiRequest()
+            .then((response) => {
+                setDevtoons(response.data.data.content)
+            })
     }, []);
 
 

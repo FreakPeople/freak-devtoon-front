@@ -1,6 +1,10 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
 import MyInfo from "./MyInfo.jsx";
+import {
+    retrieveBadWordsWarningCountApiRequest,
+    retrieveCookieWalletApiRequest,
+    retrieveMemberApiRequest
+} from "../../api_service/DevtoonApiService.js";
 
 function MyPage() {
     const bodyContainer = {
@@ -27,30 +31,24 @@ function MyPage() {
     const memberId = 1
 
     useEffect(() => {
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/v1/webtoon-viewers/' + memberId
-        }).then((response) => {
-            setMyInfo(response.data.data)
-        })
+        retrieveMemberApiRequest(memberId)
+            .then((response) => {
+                setMyInfo(response.data.data)
+            })
     }, []);
 
     useEffect(() => {
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/v1/bad-words-warning-count?webtoonViewerNo=' + memberId
-        }).then((response) => {
-            setMyWarningCount(response.data.data)
-        })
+        retrieveBadWordsWarningCountApiRequest(memberId)
+            .then((response) => {
+                setMyWarningCount(response.data.data)
+            })
     }, []);
 
     useEffect(() => {
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/v1/cookie-wallets?webtoonViewerNo=' + memberId
-        }).then((response) => {
-            setMyCookieQuantity(response.data.data)
-        })
+        retrieveCookieWalletApiRequest(memberId)
+            .then((response) => {
+                setMyCookieQuantity(response.data.data)
+            })
     }, []);
 
     return (

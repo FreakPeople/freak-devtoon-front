@@ -5,7 +5,7 @@ import {useState} from "react";
 
 export default function LoginPage() {
 
-    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
 
     const [password, setPassword] = useState('')
 
@@ -13,16 +13,18 @@ export default function LoginPage() {
 
     const authContext = useAuth()
 
-    function handeUsernameChange(event) {
-        setUsername(event.target.value)
+    function handleEmailChange(event) {
+        setEmail(event.target.value)
     }
 
-    function handePasswordChange(event) {
+    function handlePasswordChange(event) {
         setPassword(event.target.value)
     }
 
-    const handleSubmit = () => {
-        if (authContext.login(username, password)) {
+    const handleSubmit = async () => {
+        const loginSuccessed = await authContext.login(email, password);
+
+        if (loginSuccessed) {
             navigate('/devtoon-list'); // navigate 함수 사용
         } else {
             alert('로그인에 실패했습니다.')
@@ -33,12 +35,12 @@ export default function LoginPage() {
         <div className="login">
             <div className="loginForm">
                 <div className="loginFormElem">
-                    <label>아이디 : </label>
-                    <input type="text" name="username" value={username} onChange={handeUsernameChange}/>
+                    <label>이메일 : </label>
+                    <input type="text" name="email" value={email} onChange={handleEmailChange}/>
                 </div>
                 <div className="loginFormElem">
                     <label>비밀번호 : </label>
-                    <input type="text" name="password" value={password} onChange={handePasswordChange}/>
+                    <input type="text" name="password" value={password} onChange={handlePasswordChange}/>
                 </div>
                 <div className="loginFormElem">
                     <button type="button" name="login" onClick={handleSubmit}>login</button>

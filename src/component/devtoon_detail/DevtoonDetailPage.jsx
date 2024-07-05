@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
 import {useParams} from "react-router-dom";
 import Devtoon from "../devtoon_list/Devtoon.jsx";
 import Chatting from "./Chatting.jsx";
+import {retrieveAllCommentApiRequest, retrieveDevtoonApiRequest} from "../../api_service/DevtoonApiService.js";
 
 function DevtoonDetailPage() {
 
@@ -62,22 +62,16 @@ function DevtoonDetailPage() {
 
 
     useEffect(() => {
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/v1/webtoons/' + id
-        }).then((response) => {
-            setDevtoon(response.data.data)
-        })
+        retrieveDevtoonApiRequest(id)
+            .then((response) => {
+                setDevtoon(response.data.data)
+            })
 
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/v1/comments?webtoonId=' + id + '&sort=createdAt,desc'
-        }).then((response) => {
-            setcomments(response.data.data.content)
-        })
-
+        retrieveAllCommentApiRequest(id)
+            .then((response) => {
+                setcomments(response.data.data.content)
+            })
     }, []);
-
 
 
     return (

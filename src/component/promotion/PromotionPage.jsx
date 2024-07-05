@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
 import Promotion from "./Promotion.jsx";
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import {retrieveAllPromotionsNowApiRequest} from "../../api_service/DevtoonApiService.js";
 
 function PromotionPage() {
     const bodyContainer = {
@@ -30,12 +30,10 @@ function PromotionPage() {
     };
 
     useEffect(() => {
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/v1/promotions/now'
-        }).then((response) => {
-            setPromotions(response.data.data)
-        })
+        retrieveAllPromotionsNowApiRequest()
+            .then((response) => {
+                setPromotions(response.data.data)
+            })
     }, []);
 
     return (
