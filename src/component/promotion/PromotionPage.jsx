@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import Promotion from "../component/Promotion.jsx";
+import Promotion from "./Promotion.jsx";
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 
 function PromotionPage() {

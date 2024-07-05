@@ -1,4 +1,4 @@
-import Devtoon from "../component/Devtoon.jsx";
+import Devtoon from "./Devtoon.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {Button} from "@mui/material";

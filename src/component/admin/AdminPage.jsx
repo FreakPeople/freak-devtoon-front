@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import Promotion from "../component/Promotion.jsx";
+import Promotion from "../promotion/Promotion.jsx";
 import {Box, Button, FormControl, InputLabel, MenuItem, Select, ToggleButton, ToggleButtonGroup} from "@mui/material";
 
 function AdminPage() {

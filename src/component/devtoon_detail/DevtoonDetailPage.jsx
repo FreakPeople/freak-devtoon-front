@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
-import Devtoon from "../component/Devtoon.jsx";
-import Chatting from "../component/Chatting.jsx";
+import Devtoon from "../devtoon_list/Devtoon.jsx";
+import Chatting from "./Chatting.jsx";
 
 function DevtoonDetailPage() {
 

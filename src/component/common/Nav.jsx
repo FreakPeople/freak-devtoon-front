@@ -1,7 +1,7 @@
 import {Link, Navigate} from "react-router-dom";
 import PersonOutlineOutlined from '@mui/icons-material/PersonOutlineOutlined';
 import './Nav.css'
-import {useAuth} from "../context/AuthContext.jsx";
+import {useAuth} from "../../context/AuthContext.jsx";
 
 function Nav() {
 

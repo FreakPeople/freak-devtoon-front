@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import MyInfo from "../component/MyInfo.jsx";
+import MyInfo from "./MyInfo.jsx";
 
 function MyPage() {
     const bodyContainer = {

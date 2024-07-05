@@ -1,14 +1,14 @@
 import './App.css'
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import Nav from "./pages/Nav.jsx";
-import DevtoonPage from "./pages/DevtoonPage.jsx";
-import PromotionPage from "./pages/PromotionPage.jsx";
-import AdminPage from "./pages/AdminPage.jsx";
-import MyPage from "./pages/MyPage.jsx";
-import DevtoonDetailPage from "./pages/DevtoonDetailPage.jsx";
+import Nav from "./component/common/Nav.jsx";
+import DevtoonPage from "./component/devtoon_list/DevtoonPage.jsx";
+import PromotionPage from "./component/promotion/PromotionPage.jsx";
+import AdminPage from "./component/admin/AdminPage.jsx";
+import MyPage from "./component/mypage/MyPage.jsx";
+import DevtoonDetailPage from "./component/devtoon_detail/DevtoonDetailPage.jsx";
 import AuthProvider, {useAuth} from "./context/AuthContext.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
-import Error from "./component/Error.jsx";
+import LoginPage from "./component/login/LoginPage.jsx";
+import Error from "./component/common/Error.jsx";
 
 function AuthenticatedRoute({children}) {
     const authContext = useAuth()
