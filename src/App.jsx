@@ -8,6 +8,7 @@ import MyPage from "./pages/MyPage.jsx";
 import DevtoonDetailPage from "./pages/DevtoonDetailPage.jsx";
 import AuthProvider, {useAuth} from "./context/AuthContext.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import Error from "./component/Error.jsx";
 
 function AuthenticatedRoute({children}) {
     const authContext = useAuth()
@@ -40,6 +41,8 @@ export default function App() {
                             <MyPage />
                         </AuthenticatedRoute>
                     } />
+
+                    <Route path="*" element={<Error />} />
                 </Routes>
             </BrowserRouter>
         </AuthProvider>
