@@ -1,0 +1,15 @@
+.login {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginFormElem {
+    padding: 5px;
+}

@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import Nav from "./component/common/Nav.jsx";
+import DevtoonPage from "./component/devtoon_list/DevtoonPage.jsx";
+import PromotionPage from "./component/promotion/PromotionPage.jsx";
+import AdminPage from "./component/admin/AdminPage.jsx";
+import MyPage from "./component/mypage/MyPage.jsx";
+import DevtoonDetailPage from "./component/devtoon_detail/DevtoonDetailPage.jsx";
+import AuthProvider, {useAuth} from "./context/AuthContext.jsx";
+import LoginPage from "./component/login/LoginPage.jsx";
+import Error from "./component/common/Error.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+function AuthenticatedRoute({children}) {
+    const authContext = useAuth()
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    if (authContext.isAuthenticated) {
+        return children
+    }
+
+    return <Navigate to="/login" />
 }
 
-export default App
+export default function App() {
+    return (
+        <AuthProvider>
+            <BrowserRouter>
+                <Nav />
+                <Routes>
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/devtoon-list" element={<DevtoonPage />} />
+                    <Route path="/devtoon-list/:id" element={<DevtoonDetailPage />} />
+                    <Route path="/promotion" element={<PromotionPage />} />
+
+                    <Route path="/admin" element={
+                        <AuthenticatedRoute>
+                            <AdminPage />
+                        </AuthenticatedRoute>
+                    } />
+                    <Route path="/my" element={
+                        <AuthenticatedRoute>
+                            <MyPage />
+                        </AuthenticatedRoute>
+                    } />
+
+                    <Route path="*" element={<Error />} />
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
+    )
+}

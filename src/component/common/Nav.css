@@ -1,0 +1,7 @@
+.navItem {
+    transition: transform 0.4s ease;
+}
+
+.navItem:hover {
+    transform: translate(3px, 3px);
+}
