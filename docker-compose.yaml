@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+    app:
+        image: devtoon-front-app  # 이미지 이름과 태그 지정
+        container_name: devtoon-front-app
+        build: .
+        ports:
+            - "3000:3000"
