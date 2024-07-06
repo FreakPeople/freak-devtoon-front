@@ -6,12 +6,11 @@ export const apiClient = axios.create(
     }
 );
 
-let jwtToken = '';
-
 apiClient.interceptors.request.use(
     (config) => {
-        if (jwtToken) {
-            config.headers.Authorization = jwtToken;
+        const token = getJwtToken();
+        if (token) {
+            config.headers.Authorization = token;
         }
         return config;
     },
@@ -20,9 +19,17 @@ apiClient.interceptors.request.use(
     }
 );
 
+export const getJwtToken = () => {
+    return sessionStorage.getItem("jwt")
+}
+
 export const setJwtToken = (token) => {
-    jwtToken = token;
+    sessionStorage.setItem("jwt", token)
 };
+
+export const removeJwtToken = () => {
+    sessionStorage.removeItem("jwt")
+}
 
 // 로그인 인증 요청
 export const loginApiRequest = (email, password) =>
