@@ -73,3 +73,16 @@ export const retrieveBadWordsWarningCountApiRequest = () =>
 // 나의 쿠키지갑 조회
 export const retrieveCookieWalletApiRequest = () =>
     apiClient.get('/v1/cookie-wallets/my')
+
+// 게시글(데브툰) 작성 요청
+export const registerDevtoonApiRequest = (formData) =>
+    apiClient.post(
+        '/v1/webtoons',
+        formData,
+        {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+    );
+
