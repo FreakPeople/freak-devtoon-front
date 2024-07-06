@@ -3,6 +3,7 @@ import {FavoriteBorderOutlined} from "@mui/icons-material";
 import {IconButton} from "@mui/material";
 import './Devtoon.css'
 import {useNavigate} from "react-router-dom";
+import DevtoonImage from "./DevtoonImage.jsx";
 
 function Devtoon(props) {
 
@@ -19,12 +20,6 @@ function Devtoon(props) {
         position: 'relative',
         width: '350px',
     };
-
-    const devtoonImageStyle = {
-        borderRadius: '20px',
-        width: '350px',
-        height: '350px'
-    }
 
     const FavoriteStyle = {
         position: 'absolute',
@@ -66,11 +61,11 @@ function Devtoon(props) {
         marginRight: '4px'
     }
 
+
     const navigate = useNavigate()
 
     const onClickDetail = ()=> {
         navigate(`/devtoon-list/${devtoon['webtoonId']}`)
-
     }
 
     const { devtoon } = props;
@@ -79,13 +74,12 @@ function Devtoon(props) {
         <div style={devtoonContainer}>
             <div style={sideBar}></div>
             <div className="devtoonContainer" style={centerStyle} onClick={() => onClickDetail()}>
-                <img style={devtoonImageStyle} src='/logo.png' alt="devtoon image"/>
+                <DevtoonImage id={devtoon['webtoonId']} fileName={devtoon['imageUrl']} />
                 <IconButton style={FavoriteStyle} color="error">
                     <FavoriteBorderOutlined/>
                 </IconButton>
                 {/*이미지 주소(준비중), 좋아요 개수(준비중)*/}
                 <div style={genreLine}>
-                    <div style={genre}>{devtoon['genre']}</div>
                     <div style={genre}>{devtoon['genre']}</div>
                 </div>
                 <div style={createdAtLine}>{devtoon['createdAt']}</div>
