@@ -1,7 +1,12 @@
 import {useEffect, useState} from "react";
 import Promotion from "./Promotion.jsx";
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
-import {retrieveAllPromotionsNowApiRequest} from "../../api_service/DevtoonApiService.js";
+import {
+    retrieveAllPromotionsNowApiRequest, retrieveBadwordsPolicyApiRequest,
+    retrieveCookiePolicyApiRequest
+} from "../../api_service/DevtoonApiService.js";
+import CookiePolicy from "./CookiePolicy.jsx";
+import BadwordsPolicy from "./BadwordsPolicy.jsx";
 
 function PromotionPage() {
     const bodyContainer = {
@@ -22,8 +27,10 @@ function PromotionPage() {
     }
 
     const [promotions, setPromotions] = useState([])
+    const [cookiePolicy, setCookiePolicy] = useState([])
+    const [badwordsPolicy, setBadwordsPolicy] = useState([])
 
-    const [promotionStatus, setPromotionStatus] = useState('');
+    const [promotionStatus, setPromotionStatus] = useState('20');
 
     const handleChangePromotionStatus = (e) => {
         setPromotionStatus(e.target.value)
@@ -32,7 +39,20 @@ function PromotionPage() {
     useEffect(() => {
         retrieveAllPromotionsNowApiRequest()
             .then((response) => {
+                console.log(response.data.data)
                 setPromotions(response.data.data)
+            })
+
+        retrieveCookiePolicyApiRequest()
+            .then((response) => {
+                console.log(response.data.data)
+                setCookiePolicy(response.data.data)
+            })
+
+        retrieveBadwordsPolicyApiRequest()
+            .then((response) => {
+                console.log(response.data.data)
+                setBadwordsPolicy(response.data.data)
             })
     }, []);
 
@@ -58,6 +78,8 @@ function PromotionPage() {
                         </FormControl>
                     </Box>
                 </div>
+                <CookiePolicy cookiePolicy={cookiePolicy}/>
+                <BadwordsPolicy badwordsPolicy={badwordsPolicy}/>
                 {promotions.map((promotion, index) => {
                     return <Promotion key={index} promotion={promotion}/>
                 })}

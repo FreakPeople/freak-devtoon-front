@@ -1,0 +1,43 @@
+.cookiePolicyContainer {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: 1px solid #f1cc14;
+}
+
+.cookieContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.cookieTitleLine {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#cookiePolicyName {
+    padding: 3px 6px 4px 6px; /*북, 동, 남, 서*/
+    background-color: #f1cc14;
+    width: 60px;
+    height: 14px;
+    font-size: 14px;
+    color: white;
+    border: solid 1px;
+    border-radius: 6px;
+}
+
+.cookieExplanation {
+    margin-top: 5px;
+    display: flex;
+}
+
+#cookieElem {
+    margin: 2px;
+    padding: 3px 6px 4px 6px;
+    height: 10px;
+    font-size: 10px;
+    color: #615F5C;
+    border: solid 1px #615F5C;
+    border-radius: 6px;
+}

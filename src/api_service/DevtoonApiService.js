@@ -52,6 +52,14 @@ export const registerMemberApiRequest = (name, email, password) =>
         }
     )
 
+// 쿠키 정책 조회
+export const retrieveCookiePolicyApiRequest = () =>
+    apiClient.get('/v1/policies/cookie-policy')
+
+// 비속어 정책 조회
+export const retrieveBadwordsPolicyApiRequest = () =>
+    apiClient.get('/v1/policies/bad-words-policy')
+
 // 현재 적용가능한 모든 프로션 조회 요청
 export const retrieveAllPromotionsNowApiRequest = ()=>
     apiClient.get('/v1/promotions/now')
@@ -101,4 +109,5 @@ export const registerDevtoonApiRequest = (formData) =>
             }
         }
     );
+
 

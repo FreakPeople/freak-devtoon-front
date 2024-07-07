@@ -81,18 +81,15 @@ function Promotion(props) {
             <div style={promotionLines}>
                 <div style={firstLine}>
                     <div style={promotionStatus}>진행 중</div>
-                    <div style={promotionTitle}>7월 프로모션 파격 행사(오성대 작가 프로모션)</div>
+                    <div style={promotionTitle}>{promotion['description']}</div>
                 </div>
                 <div style={secondLine}>
-                    <div style={discountAttribute}>쿠키할인</div>
-                    <div style={discountAttribute}>2개할인</div>
-                    <div style={discountAttribute}>중복 적용 불가능</div>
-                    <div style={discountAttribute}>중복 적용 불가능</div>
-                    <div style={discountAttribute}>중복 적용 불가능</div>
-                    <div style={discountAttribute}>중복 적용 불가능</div>
+                    <div style={discountAttribute}>{promotion['discountType']}</div>
+                    <div style={discountAttribute}>{promotion['discountQuantity']}개 할인</div>
+                    <div style={discountAttribute}>{`중복 적용 ${promotion['isDiscountDuplicatable'] ? '가능' : '불가능'}`}</div>
                 </div>
                 <div style={thirdLine}>
-                    description : 동해물과 백두산이 마르고 닭도록 description : 동해물과 백두산이 마르고 닭도록 description : 동해물과 백두산이 마르고 닭도록
+                description : {promotion['description']}
                 </div>
             </div>
             <div style={dateLine}>
@@ -108,15 +105,6 @@ function Promotion(props) {
                 </div>
                 {isAdmin && <div style={promotionEndButton}><Button size="small">종료</Button></div>}
             </div>
-
-            {/*<p>{promotion['promotionId']}</p>*/}
-            {/*<p>{promotion['description']}</p>*/}
-            {/*<p>{promotion['discountType']}</p>*/}
-            {/*<p>{promotion['discountRate']}</p>*/}
-            {/*<p>{promotion['discountQuantity']}</p>*/}
-            {/*<p>{promotion['isDiscountDuplicatable']}</p>*/}
-            {/*<p>{promotion['startDate']}</p>*/}
-            {/*<p>{promotion['endDate']}</p>*/}
         </div>
     )
 }
