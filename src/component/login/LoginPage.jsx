@@ -2,12 +2,16 @@ import './LoginPage.css'
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../context/AuthContext.jsx";
 import {useState} from "react";
+import {Modal} from "@mui/material";
+import RegisterMember from "./RegisterMember.jsx";
 
 export default function LoginPage() {
 
     const [email, setEmail] = useState('')
 
     const [password, setPassword] = useState('')
+
+    const [open, setOpen] = useState(false)
 
     const navigate = useNavigate()
 
@@ -31,6 +35,14 @@ export default function LoginPage() {
         }
     };
 
+    function handleOpen() {
+        setOpen(true);
+    }
+
+    function handleClose() {
+        setOpen(false);
+    }
+
     return (
         <div className="login">
             <div className="loginForm">
@@ -43,7 +55,16 @@ export default function LoginPage() {
                     <input type="text" name="password" value={password} onChange={handlePasswordChange}/>
                 </div>
                 <div className="loginFormElem">
-                    <button type="button" name="login" onClick={handleSubmit}>login</button>
+                    <button type="button" name="login" onClick={handleSubmit}>로그인</button>
+                    <button type="button" name="registerMember" onClick={handleOpen}>회원가입</button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="child-modal-title"
+                        aria-describedby="child-modal-description"
+                    >
+                        <RegisterMember handleClose = {handleClose}/>
+                    </Modal>
                 </div>
             </div>
         </div>

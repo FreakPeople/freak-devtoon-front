@@ -41,6 +41,17 @@ export const loginApiRequest = (email, password) =>
         }
     )
 
+// 회원 가입 요청
+export const registerMemberApiRequest = (name, email, password) =>
+    apiClient.post(
+        '/v1/members',
+        {
+            name: name,
+            email: email,
+            password: password
+        }
+    )
+
 // 현재 적용가능한 모든 프로션 조회 요청
 export const retrieveAllPromotionsNowApiRequest = ()=>
     apiClient.get('/v1/promotions/now')
