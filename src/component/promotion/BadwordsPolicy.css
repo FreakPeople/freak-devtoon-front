@@ -1,0 +1,43 @@
+.badwordsPolicyContainer {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: 1px solid #2abd09;
+}
+
+.badwordsContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.badwordsTitleLine {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#badwordsPolicyName {
+    padding: 3px 6px 4px 6px; /*북, 동, 남, 서*/
+    background-color: #2abd09;
+    width: 70px;
+    height: 14px;
+    font-size: 14px;
+    color: white;
+    border: solid 1px;
+    border-radius: 6px;
+}
+
+.badwordsExplanation {
+    margin-top: 5px;
+    display: flex;
+}
+
+#badwordsElem {
+    margin: 2px;
+    padding: 3px 6px 4px 6px;
+    height: 10px;
+    font-size: 10px;
+    color: #615F5C;
+    border: solid 1px #615F5C;
+    border-radius: 6px;
+}
