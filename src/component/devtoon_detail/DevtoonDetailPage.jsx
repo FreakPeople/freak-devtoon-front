@@ -46,15 +46,6 @@ function DevtoonDetailPage() {
         height: '150px'
     }
 
-    const chatStyle = {
-        marginBottom: '20px',
-        display: 'flex',
-        flexDirection: 'column',
-        border: '1px solid grey',
-        width: '350px',
-        height: '580px'
-    }
-
     const {id} = useParams()
 
     const [devtoon, setDevtoon] = useState([])
@@ -79,12 +70,10 @@ function DevtoonDetailPage() {
             <div style={bodyContainer}>
                 <div style={sideBar}></div>
                 <div style={centerStyle}>
-                    <div style={titleStyle}>상세보기 + 채팅</div>
+                    <div style={titleStyle}>상세보기</div>
                     <div style={devtoonDetail}>
                         <Devtoon devtoon={devtoon}/>
-                        <div style={chatStyle}>
-                            <Chatting devtoon={devtoon} comments={comments}/>
-                        </div>
+                        <Chatting devtoon={devtoon} comments={comments}/>
                     </div>
                 </div>
                 <div style={sideBar}></div>

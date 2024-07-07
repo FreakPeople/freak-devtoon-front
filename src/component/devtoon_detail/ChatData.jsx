@@ -1,3 +1,4 @@
+import DateFormatter from "../../util/DateFormatter.jsx";
 
 function ChatData(props) {
 
@@ -28,9 +29,9 @@ function ChatData(props) {
 
     return (
         <div style={chatStyle}>
-            <div style={webtoonViewerStyle}>홍길동 : {comment['webtoonViewerNo']}</div>
+            <div style={webtoonViewerStyle}>{comment['writerName']}</div>
             <div style={contentStyle}>{comment['content']}</div>
-            <div style={createAtStyle}>{comment['createAt']}</div>
+            <div style={createAtStyle}>{DateFormatter.format(comment['createAt'])}</div>
         </div>
     );
 }

@@ -66,8 +66,6 @@ export const writeCommentApiRequest = (webtoonId, commentContent) =>
         '/v1/comments',
         {
             webtoonId: webtoonId,
-            detailId: '1',
-            webtoonViewerId: '1',
             content: commentContent
         }
     )
