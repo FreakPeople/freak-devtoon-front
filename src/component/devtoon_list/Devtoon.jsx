@@ -4,6 +4,7 @@ import {IconButton} from "@mui/material";
 import './Devtoon.css'
 import {useNavigate} from "react-router-dom";
 import DevtoonImage from "./DevtoonImage.jsx";
+import DateFormatter from "../../util/DateFormatter.jsx";
 
 function Devtoon(props) {
 
@@ -36,16 +37,17 @@ function Devtoon(props) {
     const genre = {
         marginTop: '2px',
         marginRight: '2px',
-        padding: '3px 6px 4px 6px', // 북, 동, 남, 서
+        padding: '3px 6px 6px 6px', // 북, 동, 남, 서
         height: '20px',
-        fontSize: '20px',
+        fontSize: '18px',
         border: 'solid 1px #615F5C',
         borderRadius: '6px'
     }
 
     const createdAtLine = {
         padding: '2px 2px 2px 4px',
-        color: '#504E4B'
+        color: '#504E4B',
+        fontSize: '12px'
     }
 
     const writerLine = {
@@ -78,11 +80,11 @@ function Devtoon(props) {
                 <IconButton style={FavoriteStyle} color="error">
                     <FavoriteBorderOutlined/>
                 </IconButton>
-                {/*이미지 주소(준비중), 좋아요 개수(준비중)*/}
                 <div style={genreLine}>
                     <div style={genre}>{devtoon['genre']}</div>
+                    <div style={genre}>{devtoon['genre']}</div>
                 </div>
-                <div style={createdAtLine}>{devtoon['createdAt']}</div>
+                <div style={createdAtLine}>{DateFormatter.format(devtoon['createdAt'])}</div>
                 <div style={writerLine}>
                     <div>{devtoon['writerName']}</div>
                     <FavoriteIcon style={favoriteIconStyle}></FavoriteIcon>

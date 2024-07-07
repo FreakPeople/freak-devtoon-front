@@ -29,7 +29,6 @@ export default function Chatting(props) {
         const response = await writeCommentApiRequest(devtoon['webtoonId'], commentContent)
 
         if (response.data.statusMessage === '성공') {
-            console.log(response.data)
             window.location.reload()
         } else {
             console.log(response.data)

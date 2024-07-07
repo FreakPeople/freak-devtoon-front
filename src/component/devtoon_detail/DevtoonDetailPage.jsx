@@ -70,7 +70,7 @@ function DevtoonDetailPage() {
             <div style={bodyContainer}>
                 <div style={sideBar}></div>
                 <div style={centerStyle}>
-                    <div style={titleStyle}>상세보기 + 채팅</div>
+                    <div style={titleStyle}>상세보기</div>
                     <div style={devtoonDetail}>
                         <Devtoon devtoon={devtoon}/>
                         <Chatting devtoon={devtoon} comments={comments}/>

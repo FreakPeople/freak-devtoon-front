@@ -45,17 +45,14 @@ function DevtoonPage() {
 
     function handleTitleChange(event) {
         setTitle(event.target.value)
-        console.log(event.target.value)
     }
 
     function handleWriterChange(event) {
         setWriter(event.target.value)
-        console.log(event.target.value)
     }
 
     function handleGenreChange(event) {
         setGenre(event.target.value)
-        console.log(event.target.value)
     }
 
     function handleImageChange(event) {
