@@ -50,13 +50,18 @@ export default function LoginPage() {
                     <TextField id="outlined-basic" label="이메일"
                                className="loginFormElemTextField"
                                variant="outlined"
-                               value={email} onChange={handleEmailChange}/>
+                               value={email}
+                               onChange={handleEmailChange}
+                    />
                 </div>
                 <div className="loginFormElem">
                     <TextField id="outlined-basic"label="비밀번호"
+                               type="password"
                                className="loginFormElemTextField"
                                variant="outlined"
-                               value={password} onChange={handlePasswordChange}/>
+                               value={password}
+                               onChange={handlePasswordChange}
+                    />
                 </div>
 
                 <div className="loginButton">

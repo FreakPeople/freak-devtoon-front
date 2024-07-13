@@ -70,12 +70,16 @@ export default function RegisterMember(props) {
                 <div className="field">
                     <TextField id="outlined-basic" label="비밀번호"
                                variant="outlined"
-                               value={password} onChange={handlePasswordChange}/>
+                               value={password}
+                               onChange={handlePasswordChange}
+                               error={password.length !== 0 && password.length < 6}
+                               helperText="비밀번호는 6자리 이상이어야 합니다."
+                    />
                 </div>
             </div>
             <div className="buttons">
                 <Button onClick={handleClose}>나가기</Button>
-                <Button onClick={handleRegister}>가입하기</Button>
+                <Button onClick={handleRegister} disabled={password.length < 6}>가입하기</Button>
             </div>
         </Box>
     )
