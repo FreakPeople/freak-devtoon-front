@@ -66,7 +66,7 @@ export const retrieveAllPromotionsNowApiRequest = ()=>
 
 // 모든 웹툰 목록 조회하기
 export const retrieveAllDevtoonsApiRequest = () =>
-    apiClient.get('/v1/webtoons')
+    apiClient.get('/v1/webtoons' + '?sort=createdAt,desc')
 
 // 댓글 작성 요청하기
 export const writeCommentApiRequest = (webtoonId, commentContent) =>
