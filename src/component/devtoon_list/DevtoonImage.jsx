@@ -2,13 +2,13 @@ import {useEffect, useState} from "react";
 
 export default function DevtoonImage(props) {
 
+    const { id, fileName, isMypage } = props;
+
     const devtoonImageStyle = {
         borderRadius: '20px',
-        width: '350px',
-        height: '350px'
+        width: isMypage ? '224px' : '350px',
+        height: isMypage ? '224px' : '350px',
     }
-
-    const { id, fileName } = props;
 
     const [imageUrl, setImageUrl] = useState('');
 

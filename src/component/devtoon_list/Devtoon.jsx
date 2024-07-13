@@ -8,8 +8,12 @@ import DateFormatter from "../../util/DateFormatter.jsx";
 
 function Devtoon(props) {
 
+    const { devtoon, isMypage } = props;
+
     const devtoonContainer = {
         marginBottom: '20px',
+        marginRight: '4px',
+        marginLeft: '4px',
         display: 'flex',
     }
 
@@ -19,7 +23,7 @@ function Devtoon(props) {
 
     const centerStyle = {
         position: 'relative',
-        width: '350px',
+        width: isMypage ? '224px' : '350px',
     };
 
     const FavoriteStyle = {
@@ -70,13 +74,11 @@ function Devtoon(props) {
         navigate(`/devtoon-list/${devtoon['webtoonId']}`)
     }
 
-    const { devtoon } = props;
-
     return (
         <div style={devtoonContainer}>
             <div style={sideBar}></div>
             <div className="devtoonContainer" style={centerStyle} onClick={() => onClickDetail()}>
-                <DevtoonImage id={devtoon['webtoonId']} fileName={devtoon['imageUrl']} />
+                <DevtoonImage id={devtoon['webtoonId']} fileName={devtoon['imageUrl']} isMypage={isMypage}/>
                 <IconButton style={FavoriteStyle} color="error">
                     <FavoriteBorderOutlined/>
                 </IconButton>

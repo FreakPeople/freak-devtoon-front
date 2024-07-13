@@ -159,7 +159,7 @@ function DevtoonPage() {
                     </div>
                     <div className="devtoonList">
                         {devtoons.map((devtoon, index) => {
-                            return <Devtoon key={index} devtoon={devtoon}/>
+                            return <Devtoon key={index} devtoon={devtoon} isMypage={false}/>
                         })}
                     </div>
                 </div>

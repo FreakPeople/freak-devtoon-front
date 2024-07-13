@@ -11,7 +11,8 @@ function MyInfo(props) {
         display: 'flex',
         flexDirection: 'column',
         padding: '4px 4px 4px 4px',
-        border: '1px solid black'
+        border: '1px solid black',
+        marginBottom: '50px'
     }
 
     const firstLine = {

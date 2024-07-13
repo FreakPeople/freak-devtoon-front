@@ -72,6 +72,9 @@ export const retrieveAllPromotionsEndedApiRequest = ()=>
 export const retrieveAllDevtoonsApiRequest = () =>
     apiClient.get('/v1/webtoons' + '?sort=createdAt,desc')
 
+export const retrieveAllMyDevtoonsApiRequest = () =>
+    apiClient.get('/v1/webtoons/my' + '?sort=createdAt,desc')
+
 // 댓글 작성 요청하기
 export const writeCommentApiRequest = (webtoonId, commentContent) =>
     apiClient.post(
