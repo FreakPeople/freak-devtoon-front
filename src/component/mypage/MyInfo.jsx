@@ -2,6 +2,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import WarningIcon from '@mui/icons-material/Warning';
 import CookieIcon from '@mui/icons-material/Cookie';
+import DateFormatter from "../../util/DateFormatter.jsx";
 
 
 function MyInfo(props) {
@@ -74,7 +75,7 @@ function MyInfo(props) {
             <div style={infoLine}>
                 <CalendarMonthIcon style={infoIcon} sx={{ fontSize: 12}}></CalendarMonthIcon>
                 {/*이 부분만 substring 사용하면 에러 발생*/}
-                <div style={lineFont}>가입일 : {myInfo['createdAt']}</div>
+                <div style={lineFont}>가입일 : {DateFormatter.format(myInfo['createdAt'])}</div>
             </div>
             <div style={infoLine}>
                 <WarningIcon style={infoIcon} sx={{ fontSize: 12}}></WarningIcon>
