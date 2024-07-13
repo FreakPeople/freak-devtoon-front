@@ -1,11 +1,13 @@
 import {useEffect, useState} from "react";
 import Promotion from "../promotion/Promotion.jsx";
 import {Box, Button, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
-import {retrieveAllPromotionsNowApiRequest} from "../../api_service/DevtoonApiService.js";
+import {
+    retrieveAllPromotionsEndedApiRequest,
+    retrieveAllPromotionsNowApiRequest
+} from "../../api_service/DevtoonApiService.js";
+import {useAuth} from "../../context/AuthContext.jsx";
 
 function AdminPage() {
-
-    const isAdmin = true
 
     const bodyContainer = {
         display: 'flex',
@@ -30,17 +32,28 @@ function AdminPage() {
     }
 
     const [promotions, setPromotions] = useState([])
-    const [promotionStatus, setPromotionStatus] = useState('');
+    const [promotionStatus, setPromotionStatus] = useState('20');
 
     const handleChangePromotionStatus = (e) => {
         setPromotionStatus(e.target.value)
     };
 
     useEffect(() => {
-        retrieveAllPromotionsNowApiRequest()
-            .then((response) => {
-                setPromotions(response.data.data)
-            })
+        if (promotionStatus === '30') {
+            console.log('종료 요청');
+            retrieveAllPromotionsEndedApiRequest()
+                .then((response) => {
+                    console.log(response.data.data)
+                    setPromotions(response.data.data)
+                })
+        } else {
+            console.log('진행중 요청');
+            retrieveAllPromotionsNowApiRequest()
+                .then((response) => {
+                    console.log(response.data.data)
+                    setPromotions(response.data.data)
+                })
+        }
     }, []);
 
     return (
@@ -59,9 +72,9 @@ function AdminPage() {
                                     label="프로모션 상태"
                                     onChange={handleChangePromotionStatus}
                                 >
-                                    <MenuItem value={10}>전체</MenuItem>
-                                    <MenuItem value={20}>진행 중</MenuItem>
-                                    <MenuItem value={30}>종료</MenuItem>
+                                    <MenuItem value={'10'}>전체</MenuItem>
+                                    <MenuItem value={'20'}>진행 중</MenuItem>
+                                    <MenuItem value={'30'}>종료</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
@@ -71,7 +84,7 @@ function AdminPage() {
                     </div>
                 </div>
                 {promotions.map((promotion, index) => {
-                    return <Promotion key={index} promotion={promotion} isAdmin={isAdmin}/>
+                    return <Promotion key={index} promotion={promotion} promotionStatus={promotionStatus}/>
                 })}
             </div>
             <div style={sideBar}></div>

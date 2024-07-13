@@ -1,5 +1,6 @@
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import {Button} from "@mui/material";
+import {useAuth} from "../../context/AuthContext.jsx";
 
 function Promotion(props) {
 
@@ -22,7 +23,7 @@ function Promotion(props) {
         flexWrap: 'wrap'
     }
 
-    const promotionStatus = {
+    const promotionStatusMessage = {
         padding: '3px 6px 4px 6px', // 북, 동, 남, 서
         backgroundColor: '#4f4f4f',
         height: '14px',
@@ -74,13 +75,17 @@ function Promotion(props) {
         marginLeft: 'auto'
     }
 
-    const {promotion, isAdmin} = props;
+    const authContext = useAuth()
+
+    const {promotion, promotionStatus} = props;
 
     return (
         <div style={promotionCard}>
             <div style={promotionLines}>
                 <div style={firstLine}>
-                    <div style={promotionStatus}>진행 중</div>
+                    <div style={promotionStatusMessage}>
+                        {promotionStatus === '30' ? '종료' : '진행 중'}
+                    </div>
                     <div style={promotionTitle}>{promotion['description']}</div>
                 </div>
                 <div style={secondLine}>
@@ -103,7 +108,7 @@ function Promotion(props) {
                     promotion['endDate'].substring(0, 10).split('-').join('.')
                 }
                 </div>
-                {isAdmin && <div style={promotionEndButton}><Button size="small">종료</Button></div>}
+                {authContext.isAdmin && <div style={promotionEndButton}><Button size="small">종료</Button></div>}
             </div>
         </div>
     )

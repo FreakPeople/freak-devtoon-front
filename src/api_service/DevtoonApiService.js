@@ -64,6 +64,10 @@ export const retrieveBadwordsPolicyApiRequest = () =>
 export const retrieveAllPromotionsNowApiRequest = ()=>
     apiClient.get('/v1/promotions/now')
 
+// 종료된 모든 프로션 조회 요청
+export const retrieveAllPromotionsEndedApiRequest = ()=>
+    apiClient.get('/v1/promotions/ended')
+
 // 모든 웹툰 목록 조회하기
 export const retrieveAllDevtoonsApiRequest = () =>
     apiClient.get('/v1/webtoons' + '?sort=createdAt,desc')

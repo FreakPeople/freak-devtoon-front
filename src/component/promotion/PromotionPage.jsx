@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import Promotion from "./Promotion.jsx";
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {
+    retrieveAllPromotionsEndedApiRequest,
     retrieveAllPromotionsNowApiRequest, retrieveBadwordsPolicyApiRequest,
     retrieveCookiePolicyApiRequest
 } from "../../api_service/DevtoonApiService.js";
@@ -29,7 +30,6 @@ function PromotionPage() {
     const [promotions, setPromotions] = useState([])
     const [cookiePolicy, setCookiePolicy] = useState([])
     const [badwordsPolicy, setBadwordsPolicy] = useState([])
-
     const [promotionStatus, setPromotionStatus] = useState('20');
 
     const handleChangePromotionStatus = (e) => {
@@ -37,11 +37,21 @@ function PromotionPage() {
     };
 
     useEffect(() => {
-        retrieveAllPromotionsNowApiRequest()
-            .then((response) => {
-                console.log(response.data.data)
-                setPromotions(response.data.data)
-            })
+        if (promotionStatus === '30') {
+            console.log('종료 요청');
+            retrieveAllPromotionsEndedApiRequest()
+                .then((response) => {
+                    console.log(response.data.data)
+                    setPromotions(response.data.data)
+                })
+        } else {
+            console.log('진행중 요청');
+            retrieveAllPromotionsNowApiRequest()
+                .then((response) => {
+                    console.log(response.data.data)
+                    setPromotions(response.data.data)
+                })
+        }
 
         retrieveCookiePolicyApiRequest()
             .then((response) => {
@@ -54,7 +64,7 @@ function PromotionPage() {
                 console.log(response.data.data)
                 setBadwordsPolicy(response.data.data)
             })
-    }, []);
+    }, [promotionStatus]);
 
     return (
         <div style={bodyContainer}>
@@ -71,9 +81,9 @@ function PromotionPage() {
                                 label="프로모션 상태"
                                 onChange={handleChangePromotionStatus}
                             >
-                                <MenuItem value={10}>전체</MenuItem>
-                                <MenuItem value={20}>진행 중</MenuItem>
-                                <MenuItem value={30}>종료</MenuItem>
+                                <MenuItem value={'10'} disabled>전체(준비중)</MenuItem>
+                                <MenuItem value={'20'}>진행 중</MenuItem>
+                                <MenuItem value={'30'}>종료</MenuItem>
                             </Select>
                         </FormControl>
                     </Box>
@@ -81,7 +91,7 @@ function PromotionPage() {
                 <CookiePolicy cookiePolicy={cookiePolicy}/>
                 <BadwordsPolicy badwordsPolicy={badwordsPolicy}/>
                 {promotions.map((promotion, index) => {
-                    return <Promotion key={index} promotion={promotion}/>
+                    return <Promotion key={index} promotion={promotion} promotionStatus={promotionStatus}/>
                 })}
             </div>
             <div style={sideBar}></div>
