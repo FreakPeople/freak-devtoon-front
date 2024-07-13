@@ -13,9 +13,12 @@ export default function AuthProvider({ children }) {
     };
 
     const [isAuthenticated, setAuthenticated] = useState(initializeAuth)
+    const [isAdmin, setIsAdmin] = useState(false)
 
     async function login(email, password) {
         const response = await loginApiRequest(email, password)
+
+        // TODO : 관리자라면 관리자라고 알려줘야함. isAdmin true로 바꿀 것.
 
         if (response.data.statusMessage === '성공') {
             const jwtToken = 'Bearer ' + response.data.data.accessToken
@@ -35,7 +38,7 @@ export default function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value = {{ isAuthenticated, login, logout }}>
+        <AuthContext.Provider value = {{ isAdmin, isAuthenticated, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

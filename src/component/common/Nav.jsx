@@ -59,7 +59,9 @@ function Nav() {
                 <div style={menuContainer}>
                     <Link className="navItem" to="/devtoon-list" style={navItem}>데브툰</Link>
                     <Link className="navItem" to="/promotion" style={navItem}>이벤트</Link>
-                    <Link className="navItem" to="/admin" style={navItem}>관리자</Link>
+                    {authContext.isAdmin &&
+                        <Link className="navItem" to="/admin" style={navItem}>관리자</Link>
+                    }
                     {authContext.isAuthenticated &&
                         <Link className="navItem" to="/login" style={navItem} onClick={logout}>로그아웃</Link>
                     }
