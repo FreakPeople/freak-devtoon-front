@@ -5,11 +5,24 @@
 }
 
 .loginForm {
+    width: 80%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .loginFormElem {
-    padding: 5px;
+    width: 100%;
+    margin: 5px;
+}
+
+.loginFormElemTextField {
+    width: 100%;
+}
+
+.loginButton {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }

@@ -2,7 +2,7 @@ import './LoginPage.css'
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../context/AuthContext.jsx";
 import {useState} from "react";
-import {Modal} from "@mui/material";
+import {Modal, TextField, Button} from "@mui/material";
 import RegisterMember from "./RegisterMember.jsx";
 
 export default function LoginPage() {
@@ -47,24 +47,33 @@ export default function LoginPage() {
         <div className="login">
             <div className="loginForm">
                 <div className="loginFormElem">
-                    <label>이메일 : </label>
-                    <input type="text" name="email" value={email} onChange={handleEmailChange}/>
+                    <TextField id="outlined-basic" label="이메일"
+                               className="loginFormElemTextField"
+                               variant="outlined"
+                               value={email} onChange={handleEmailChange}/>
                 </div>
                 <div className="loginFormElem">
-                    <label>비밀번호 : </label>
-                    <input type="text" name="password" value={password} onChange={handlePasswordChange}/>
+                    <TextField id="outlined-basic"label="비밀번호"
+                               className="loginFormElemTextField"
+                               variant="outlined"
+                               value={password} onChange={handlePasswordChange}/>
                 </div>
-                <div className="loginFormElem">
-                    <button type="button" name="login" onClick={handleSubmit}>로그인</button>
-                    <button type="button" name="registerMember" onClick={handleOpen}>회원가입</button>
-                    <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="child-modal-title"
-                        aria-describedby="child-modal-description"
-                    >
-                        <RegisterMember handleClose = {handleClose}/>
-                    </Modal>
+
+                <div className="loginButton">
+                    <div>
+                        <Button id="loginButton" variant="outlined" name="login" onClick={handleSubmit}>로그인</Button>
+                    </div>
+                    <div>
+                        <Button id="registerButton" variant="outlined" name="registerMember" onClick={handleOpen}>회원가입</Button>
+                        <Modal
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="child-modal-title"
+                            aria-describedby="child-modal-description"
+                        >
+                            <RegisterMember handleClose = {handleClose}/>
+                        </Modal>
+                    </div>
                 </div>
             </div>
         </div>
