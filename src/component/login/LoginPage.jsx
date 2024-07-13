@@ -47,6 +47,12 @@ export default function LoginPage() {
         <div className="login">
             <div className="loginForm">
                 <div className="loginFormElem">
+                    <h2 id="child-modal-title">로그인</h2>
+                    <p id="child-modal-description">
+                        로그인 해주세요!
+                    </p>
+                </div>
+                <div className="loginFormElem">
                     <TextField id="outlined-basic" label="이메일"
                                className="loginFormElemTextField"
                                variant="outlined"
@@ -55,7 +61,7 @@ export default function LoginPage() {
                     />
                 </div>
                 <div className="loginFormElem">
-                    <TextField id="outlined-basic"label="비밀번호"
+                    <TextField id="outlined-basic" label="비밀번호"
                                type="password"
                                className="loginFormElemTextField"
                                variant="outlined"
@@ -69,14 +75,15 @@ export default function LoginPage() {
                         <Button id="loginButton" variant="outlined" name="login" onClick={handleSubmit}>로그인</Button>
                     </div>
                     <div>
-                        <Button id="registerButton" variant="outlined" name="registerMember" onClick={handleOpen}>회원가입</Button>
+                        <Button id="registerButton" variant="outlined" name="registerMember"
+                                onClick={handleOpen}>회원가입</Button>
                         <Modal
                             open={open}
                             onClose={handleClose}
                             aria-labelledby="child-modal-title"
                             aria-describedby="child-modal-description"
                         >
-                            <RegisterMember handleClose = {handleClose}/>
+                            <RegisterMember handleClose={handleClose}/>
                         </Modal>
                     </div>
                 </div>
