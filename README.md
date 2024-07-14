@@ -13,7 +13,7 @@ git clone https://github.com/FreakPeople/freak-devtoon-front.git
 ### 2. 도커 컴포즈 명령어 실행
 - 터미널의 프로젝트 최상위 디렉토리에서 아래의 명령어를 실행합니다.
 ```
-docker-compose up -d
+docker-compose up --build
 ```
 
 ### 3. 애플리케이션 종료
