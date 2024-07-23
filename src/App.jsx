@@ -1,6 +1,5 @@
 import './App.css'
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import Nav from "./component/common/Nav.jsx";
+import {Navigate, Route, Routes} from "react-router-dom";
 import DevtoonPage from "./component/devtoon_list/DevtoonPage.jsx";
 import PromotionPage from "./component/promotion/PromotionPage.jsx";
 import AdminPage from "./component/admin/AdminPage.jsx";
@@ -10,6 +9,7 @@ import AuthProvider, {useAuth} from "./context/AuthContext.jsx";
 import LoginPage from "./component/login/LoginPage.jsx";
 import Error from "./component/common/Error.jsx";
 import {useEffect} from "react";
+import Layout from "./layouts/Layout.jsx";
 
 function AuthenticatedRoute({children}) {
     const authContext = useAuth()
@@ -18,7 +18,7 @@ function AuthenticatedRoute({children}) {
         return children
     }
 
-    return <Navigate to="/login" />
+    return <Navigate to="/login"/>
 }
 
 function AdminRoute({children}) {
@@ -35,36 +35,33 @@ function AdminRoute({children}) {
     }, [authContext.isAdmin]);
 
     if (authContext.isAuthenticated) {
-        return <Navigate to="/devtoon-list" />
+        return <Navigate to="/devtoon-list"/>
     }
-    return <Navigate to="/login" />
+    return <Navigate to="/login"/>
 }
 
 export default function App() {
     return (
         <AuthProvider>
-            <BrowserRouter>
-                <Nav />
+            <Layout>
                 <Routes>
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/devtoon-list" element={<DevtoonPage />} />
-                    <Route path="/devtoon-list/:id" element={<DevtoonDetailPage />} />
-                    <Route path="/promotion" element={<PromotionPage />} />
-
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/devtoon-list" element={<DevtoonPage/>}/>
+                    <Route path="/devtoon-list/:id" element={<DevtoonDetailPage/>}/>
+                    <Route path="/promotion" element={<PromotionPage/>}/>
                     <Route path="/admin" element={
                         <AdminRoute>
-                            <AdminPage />
+                            <AdminPage/>
                         </AdminRoute>
-                    } />
+                    }/>
                     <Route path="/my" element={
                         <AuthenticatedRoute>
-                            <MyPage />
+                            <MyPage/>
                         </AuthenticatedRoute>
-                    } />
-
-                    <Route path="*" element={<Error />} />
+                    }/>
+                    <Route path="*" element={<Error/>}/>
                 </Routes>
-            </BrowserRouter>
+            </Layout>
         </AuthProvider>
     )
 }
