@@ -3,7 +3,7 @@ import ChatData from "./ChatData.jsx";
 import {TextField, Button} from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import {useState} from "react";
-import {writeCommentApiRequest} from "../../api_service/DevtoonApiService.js";
+import {writeCommentApiRequest} from "../../api/DevtoonApiService.js";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../context/AuthContext.jsx";
 

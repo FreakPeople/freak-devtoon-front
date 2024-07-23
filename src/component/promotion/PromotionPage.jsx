@@ -5,7 +5,7 @@ import {
     retrieveAllPromotionsEndedApiRequest,
     retrieveAllPromotionsNowApiRequest, retrieveBadwordsPolicyApiRequest,
     retrieveCookiePolicyApiRequest
-} from "../../api_service/DevtoonApiService.js";
+} from "../../api/DevtoonApiService.js";
 import CookiePolicy from "./CookiePolicy.jsx";
 import BadwordsPolicy from "./BadwordsPolicy.jsx";
 

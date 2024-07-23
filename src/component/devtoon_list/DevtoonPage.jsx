@@ -3,7 +3,7 @@ import Devtoon from "./Devtoon.jsx";
 import {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import {Box, Button, Modal, TextField} from "@mui/material";
-import {registerDevtoonApiRequest, retrieveAllDevtoonsApiRequest} from "../../api_service/DevtoonApiService.js";
+import {registerDevtoonApiRequest, retrieveAllDevtoonsApiRequest} from "../../api/DevtoonApiService.js";
 import {useAuth} from "../../context/AuthContext.jsx";
 
 function DevtoonPage() {

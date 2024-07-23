@@ -4,7 +4,7 @@ import {Box, Button, FormControl, InputLabel, MenuItem, Select} from "@mui/mater
 import {
     retrieveAllPromotionsEndedApiRequest,
     retrieveAllPromotionsNowApiRequest
-} from "../../api_service/DevtoonApiService.js";
+} from "../../api/DevtoonApiService.js";
 import {useAuth} from "../../context/AuthContext.jsx";
 
 function AdminPage() {

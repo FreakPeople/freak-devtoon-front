@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import Devtoon from "../devtoon_list/Devtoon.jsx";
 import Chatting from "./Chatting.jsx";
-import {retrieveAllCommentApiRequest, retrieveDevtoonApiRequest} from "../../api_service/DevtoonApiService.js";
+import {retrieveAllCommentApiRequest, retrieveDevtoonApiRequest} from "../../api/DevtoonApiService.js";
 
 function DevtoonDetailPage() {
 

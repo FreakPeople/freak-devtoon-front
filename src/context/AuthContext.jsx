@@ -1,5 +1,5 @@
 import {createContext, useContext, useState} from "react";
-import {loginApiRequest, setJwtToken, removeJwtToken} from "../api_service/DevtoonApiService.js";
+import {loginApiRequest, setJwtToken, removeJwtToken} from "../api/DevtoonApiService.js";
 
 export const AuthContext = createContext()
 

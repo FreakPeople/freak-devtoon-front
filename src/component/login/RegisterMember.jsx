@@ -1,6 +1,6 @@
 import {Box, Button, TextField} from "@mui/material";
 import {useState} from "react";
-import {registerMemberApiRequest} from "../../api_service/DevtoonApiService.js";
+import {registerMemberApiRequest} from "../../api/DevtoonApiService.js";
 
 export default function RegisterMember(props) {
 

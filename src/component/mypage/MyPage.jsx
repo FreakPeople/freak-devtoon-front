@@ -5,7 +5,7 @@ import {
     retrieveBadWordsWarningCountApiRequest,
     retrieveCookieWalletApiRequest,
     retrieveMemberApiRequest
-} from "../../api_service/DevtoonApiService.js";
+} from "../../api/DevtoonApiService.js";
 import Devtoon from "../devtoon_list/Devtoon.jsx";
 
 function MyPage() {
